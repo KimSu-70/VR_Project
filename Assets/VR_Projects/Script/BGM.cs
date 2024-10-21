@@ -4,18 +4,25 @@ using UnityEngine;
 
 public class BGM : MonoBehaviour
 {
+    private bool isg = false;
+
     private void Start()
     {
         AudioManager.Instance.PlayBgm(true);
+        isg = true;
     }
 
-    public void PBgm()
+    public void PlaysBgm()
     {
-        AudioManager.Instance.PlayBgm(true);
-    }
-
-    public void SBgm()
-    {
-        AudioManager.Instance.PlayBgm(false);
+        if (isg == false)
+        {
+            AudioManager.Instance.PlayBgm(true);
+            isg = true;
+        }
+        else
+        {
+            AudioManager.Instance.PlayBgm(false);
+            isg = false;
+        }
     }
 }

@@ -13,6 +13,7 @@ public class HitManager : MonoBehaviour
 
     public bool attackCheck = false;
     public bool playerAttackCheck = false;
+    public bool deadCheck = false;
 
     private void Awake()
     {
@@ -53,20 +54,27 @@ public class HitManager : MonoBehaviour
         while (true)
         {
             // 턴에 따라 행동 처리
-            if (currentTurn == Turn.Player)
+            if (currentTurn == Turn.Player && deadCheck == false)
             {
                 Debug.Log("Player's 턴");
                 playerAttackCheck = true;
                 yield return new WaitForSeconds(turnDuration); // 턴 지속 시간 대기
                 currentTurn = Turn.Bot; // 턴 전환
             }
-            else
+            else if (deadCheck == false)
             {
                 // 몬스터 턴의 행동 처리
                 Debug.Log("Bot's 턴");
                 attackCheck = true;
                 yield return new WaitForSeconds(turnDuration); // 턴 지속 시간 대기
                 currentTurn = Turn.Player; // 턴 전환
+            }
+            else if (deadCheck)
+            {
+                // 플레이어 또는 봇이 죽었을 때 처리
+                Debug.Log("Game Over or Bot Dead");
+                // 추가적인 로직 필요 (예: 게임 종료 처리)
+                yield break; // 코루틴 종료
             }
         }
     }

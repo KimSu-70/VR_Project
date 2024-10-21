@@ -12,8 +12,8 @@ public class BotController : MonoBehaviour
     //[SerializeField] GameObject player;
     [SerializeField] GameObject botGame;
     [SerializeField] Animator animator;
-    [SerializeField] int maxHp = 10;
-    [SerializeField] int hp;
+    public int maxHp = 10;
+    public int hp;
 
     //[SerializeField] PlayerController playerhit;
 
@@ -204,7 +204,6 @@ public class BotController : MonoBehaviour
         animator.applyRootMotion = true;
         animator.SetBool("Attack", true);
         HitManager.Instance.attackCheck = false;
-        GameManager.Instance.playerhp -= 1;
         AudioManager.Instance.PlaySfx(AudioManager.Sfx.Attack);
     }
 

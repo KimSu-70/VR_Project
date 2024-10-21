@@ -5,15 +5,17 @@ TagManager:
   serializedVersion: 2
   tags:
   - Bot
+  - Missile
+  - Hit
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Bot
   - Water
   - UI
-  - 
-  - 
+  - Hit
+  - Dead
   - 
   - 
   - 

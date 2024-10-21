@@ -7,7 +7,7 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance { get; private set; }
 
     [SerializeField] GameObject player;
-    [SerializeField] int playerMaxhp = 6;
+    public int playerMaxhp = 6;
     public int playerhp;
 
     private void Awake()
