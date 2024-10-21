@@ -6508,7 +6508,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentTurn: 0
-  turnDuration: 4
+  turnDuration: 7
   curTurnTime: 0
   attackCheck: 0
   playerAttackCheck: 0
@@ -9361,10 +9361,9 @@ MonoBehaviour:
   sfxClips:
   - {fileID: 8300000, guid: 464ce5199a06fc84cb6203152e061abd, type: 3}
   - {fileID: 8300000, guid: 47a267cb9473f0d4490b0812e5ad9bec, type: 3}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 8300000, guid: 476590364b8eda94ea456cc73645be01, type: 3}
+  - {fileID: 8300000, guid: 47a267cb9473f0d4490b0812e5ad9bec, type: 3}
+  - {fileID: 8300000, guid: 25949e841205df044bb7f922a5d4386d, type: 3}
   sfxVolume: 0.8
   channels: 6
 --- !u!1 &1755021276 stripped

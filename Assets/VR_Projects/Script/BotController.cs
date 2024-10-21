@@ -1,4 +1,6 @@
+using System.Collections;
 using UnityEngine;
+using UnityEngine.UIElements;
 using static HitManager;
 
 public class BotController : MonoBehaviour
@@ -164,10 +166,8 @@ public class BotController : MonoBehaviour
 
         public override void Enter()
         {
-            bot.animator.applyRootMotion = true;
-            bot.animator.SetBool("Attack", true);
-            HitManager.Instance.attackCheck = false;
-            AudioManager.Instance.PlaySfx(AudioManager.Sfx.Hit);
+            float delay = Random.Range(1.0f, 4.5f);
+            bot.StartCoroutine(bot.AttackAfterDelay(delay));
         }
 
         public override void Update()
@@ -196,6 +196,16 @@ public class BotController : MonoBehaviour
         {
 
         }
+    }
+
+    private IEnumerator AttackAfterDelay(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        animator.applyRootMotion = true;
+        animator.SetBool("Attack", true);
+        HitManager.Instance.attackCheck = false;
+        GameManager.Instance.playerhp -= 1;
+        AudioManager.Instance.PlaySfx(AudioManager.Sfx.Attack);
     }
 
     public void BotHit(int damage)
