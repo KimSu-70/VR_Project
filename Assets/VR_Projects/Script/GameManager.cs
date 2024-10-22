@@ -7,6 +7,7 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance { get; private set; }
 
     [SerializeField] GameObject player;
+    [SerializeField] UiManager ui;
     public int playerMaxhp = 6;
     public int playerhp;
 
@@ -19,6 +20,15 @@ public class GameManager : MonoBehaviour
         else
         {
             Destroy(gameObject);
+        }
+    }
+    private void Update()
+    {
+        if(playerhp <= 0)
+        {
+            playerhp = 0;
+            HitManager.Instance.deadCheck = true;
+            ui.GameOver();
         }
     }
 

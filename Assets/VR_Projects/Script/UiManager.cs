@@ -1,7 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Purchasing;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using UnityEngine.XR.Interaction.Toolkit;
 
 public class UiManager : MonoBehaviour
 {
@@ -9,6 +12,14 @@ public class UiManager : MonoBehaviour
     [SerializeField] Slider playerHp;
     [SerializeField] Slider botHp;
     [SerializeField] BotController bot;
+    [SerializeField] XRBaseController rightController;
+
+    [SerializeField] GameObject gameOver;
+
+    private void Start()
+    {
+        gameOver.SetActive(false);
+    }
 
     private void Update()
     {
@@ -36,5 +47,15 @@ public class UiManager : MonoBehaviour
         botHp.maxValue = bot.maxHp;
         botHp.minValue = 0;
         botHp.value = bot.hp;
+    }
+
+    public void GameOver()
+    {
+        HitManager.Instance.deadCheck = true;
+        gameOver.SetActive(true);
+        if (HitManager.Instance.deadCheck && rightController.activateInteractionState.active)
+        {
+            SceneManager.LoadScene("Slap");
+        }
     }
 }
