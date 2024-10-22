@@ -10,6 +10,7 @@ public class BotController : MonoBehaviour
     private BaseState[] states = new BaseState[(int)State.Size];
 
     //[SerializeField] GameObject player;
+    [SerializeField] UiManager ui;
     [SerializeField] GameObject botGame;
     [SerializeField] Animator animator;
     public int maxHp = 10;
@@ -190,6 +191,11 @@ public class BotController : MonoBehaviour
         public override void Enter()
         {
             bot.animator.SetBool("Dead", true);
+        }
+
+        public override void Update()
+        {
+            bot.ui.GameOver();
         }
 
         public override void Exit()
